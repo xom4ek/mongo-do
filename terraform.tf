@@ -61,4 +61,8 @@ resource "null_resource" "ansible-provision" {
   provisioner "local-exec" {
     command = "cat hosts.example >> hosts"
   }
+
+  provisioner "local-exec" {
+    command = "export ANSIBLE_HOST_KEY_CHECKING=False && ansible-playbook -i hosts main.yml"
+  }
 }
